@@ -32,7 +32,7 @@ const DraggableItem = ({ id, label }) => {
         draggable
         sx={{
           bgcolor: 'white',
-          my: '2%',
+          my:'2%',
           borderRadius:'5px',
           fontSize:'5px'
         }}
@@ -62,8 +62,8 @@ const DroppableField = ({ id, value }) => {
     <Box width={"100%"}>
       
     <TextField
-placeholder={`Drop Action Here ${id}`}
-value={value || ''}
+  placeholder={`Drop Action Here ${id}`}
+      value={value || ''}
 size='small'
 variant="outlined"
 fullWidth
@@ -142,19 +142,19 @@ const Dragndrop = () => {
       display={'flex'}
       flexDirection={'column'}
       >
-        <Box display={{md:'flex'}}  >
+        <Box flex={4} display={{md:'flex'}}  w={'100%'} >
       <Box w={'100%'}>
       <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: 'none', zIndex: 1}} >
         <Toolbar sx={{ backgroundColor: 'white', display: 'flex', justifyContent: 'space-between' }}>
           <Box display={'flex'} alignItems={'center'}>
             <img src={Logo} style={{ width: '15%' }} alt="" />
-            <Typography color="primary" variant="h6" sx={{ fontSize: { xs: '10px', md: '15px' } }}>
+            <Typography color="primary" variant="h6" fontWeight={'bold'} sx={{ fontSize: { xs: '13px', md: '16px' } }}>
               GATEWAY OF A CHAMPION
             </Typography>
           </Box>
           <Box>
-          <Typography color="primary" variant="h6" sx={{ fontSize: { xs: '5px', md: '10px' } }}>
-              samle@gmail.com
+          <Typography color="gray" variant="h6" sx={{ fontSize: { xs: '10px', md: '15px' } }}>
+              sample@gmail.com
             </Typography>
             
           </Box>
@@ -166,14 +166,11 @@ const Dragndrop = () => {
           component="main"
           display={'flex'}
           width={'100%'}
-          
           height={{md:'100vh'}}
           diplay={'flex'}
           justifyContent={'center'}
-          
-          
         >
-          <Box width={{sx:'90%',sm:'90%',md:'80%'}} m={2} >
+          <Box width={{sx:'100%',sm:'100%',md:'80%'}} >
           <Typography variant='h6' fontWeight={'bold'}>
             A. Tell us how much you enjoy
           </Typography><br/>
@@ -182,7 +179,7 @@ const Dragndrop = () => {
 
             {/* tab 1.1*/}
             <Grid item size={4} >
-            <Typography variant='h6' color='black' fontSize={"15px"} >
+            <Typography variant='h6' color='black' fontSize={{md:"15px",sm:'12px',xs:'12px'}} >
             I enjoy most
           </Typography>
 
@@ -200,7 +197,7 @@ const Dragndrop = () => {
 
             {/* tab 1.2*/}
             <Grid item size={4}>
-            <Typography variant='h6' color='black' fontSize={"15px"} >
+            <Typography variant='h6' color='black' fontSize={{md:"15px",sm:'12px',xs:'12px'}} >
             I somewhat most
           </Typography>
           {
@@ -218,7 +215,7 @@ const Dragndrop = () => {
 
             {/* tab 1.2*/}
             <Grid item size={4}>
-            <Typography variant='h6' color='black' fontSize={"15px"}>
+            <Typography variant='h6' color='black' fontSize={{md:"15px",sm:'12px',xs:'12px'}}>
             I least most
           </Typography>
           {

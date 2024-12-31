@@ -14,7 +14,7 @@ const App = () => {
   return (
     <div>
       <authContext.Provider value={{token,setToken}}>
-      <BrowserRouter>
+      <BrowserRouter  basename="/ex1v1">
       <Routes>
         <Route path='/' element={<Login />}/>
         <Route path='/home' element={<Home/>}/>
