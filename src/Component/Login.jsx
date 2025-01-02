@@ -28,8 +28,7 @@ const DraggableItem = ({ id, label }) => {
   return (
     <Box ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <ListItem
-        style={{ cursor: 'grab', userSelect: 'none' }}
-        draggable
+        style={{ cursor: 'grab'}}
         sx={{
           bgcolor: 'white',
           my:'2%',
@@ -63,7 +62,7 @@ const DroppableField = ({ id, value }) => {
       
     <TextField
   placeholder={`Drop Action Here ${id}`}
-      value={value || ''}
+      value={value}
 size='small'
 variant="outlined"
 fullWidth
@@ -85,8 +84,14 @@ sx={{
 
 const Dragndrop = () => {
   const theme = useTheme(); 
-  const [fields, setFields] = useState({ 
-      1:'', 2: '',3:'',4:'',5:'',6:'' 
+   const [mostEnjoyFields, setMostEnjoyFields] = useState({
+    1:'', 2: '',3:'',4:'',5:'',6:'' 
+    });
+    const [somewhatEnjoyFields, setSomewhatEnjoyFields] = useState({
+      7:'', 8: '',9:'',10:'',11:'',12:'' 
+    });
+    const [leastEnjoyFields, setLeastEnjoyFields] = useState({
+      13:'', 14: '',15:'',16:'',17:'',18:'' 
     });
     
    const [options, setOptions] = useState([
@@ -116,21 +121,45 @@ const Dragndrop = () => {
 
     const handleDropEnd = (event) => {
       const { active, over } = event;
+      console.log("active :", active);
       if (over) {
         const activeOption = options.find((o) => o.id === active.id);
-        console.log("activeOption :",activeOption)
-        const previousValue = fields[over.id];
-        console.log('previousValue :',previousValue)
-        setFields((value) => ({ ...value, [over.id]: activeOption?.label }));
-        setOptions((value) => {
-          const newOptions = value.filter((o) => o.id !== active.id);
-          if (previousValue) {
-            newOptions.push({ id: active.id, label: previousValue });
-          }
-          return newOptions;
-        });
+        console.log("activeOption :", activeOption);
+        if (mostEnjoyFields[over.id] !== undefined) {
+          const previousValue = mostEnjoyFields[over.id];
+          setMostEnjoyFields((prev) => ({ ...prev, [over.id]: activeOption?.label }));
+          setOptions((value) => {
+            const newOptions = value.filter((o) => o.id !== active.id);
+            if (previousValue) {
+              newOptions.push({ id: active.id, label: previousValue });
+            }
+            return newOptions;
+          });
+        } else if (somewhatEnjoyFields[over.id] !== undefined) {
+          const previousValue = somewhatEnjoyFields[over.id];
+          setSomewhatEnjoyFields((prev) => ({ ...prev, [over.id]: activeOption?.label }));
+          setOptions((value) => {
+            const newOptions = value.filter((o) => o.id !== active.id);
+            if (previousValue) {
+              newOptions.push({ id: active.id, label: previousValue });
+            }
+            return newOptions;
+          });
+        } else if (leastEnjoyFields[over.id] !== undefined) {
+          const previousValue = leastEnjoyFields[over.id];
+          setLeastEnjoyFields((prev) => ({ ...prev, [over.id]: activeOption?.label }));
+          setOptions((value) => {
+            const newOptions = value.filter((o) => o.id !== active.id);
+            if (previousValue) {
+              newOptions.push({ id: active.id, label: previousValue });
+            }
+            return newOptions;
+          });
+        }
       }
     };
+
+
   
 
   return (
@@ -187,7 +216,7 @@ const Dragndrop = () => {
             [1,2,3,4,5,6].map((index)=>(
               <Grid item size={6} key={index} width={'100%'}>
               <Box >
-                <DroppableField id={index} value={fields[index]} />
+                <DroppableField id={index} value={mostEnjoyFields[index]} />
               </Box>
             </Grid>
             ))
@@ -201,10 +230,10 @@ const Dragndrop = () => {
             I somewhat most
           </Typography>
           {
-            [1,2,3,4,5,6].map((index)=>(
+            [7,8,9,10,11,12].map((index)=>(
               <Grid item size={6} key={index} width={'100%'}>
               <Box >
-                <DroppableField id={index} value={fields[index]} />
+                <DroppableField id={index} value={somewhatEnjoyFields[index]} />
               </Box>
             </Grid>
             ))
@@ -219,10 +248,10 @@ const Dragndrop = () => {
             I least most
           </Typography>
           {
-            [1,2,3,4,5,6].map((index)=>(
+            [13,14,15,16,17,18].map((index)=>(
               <Grid item size={6} key={index} width={'100%'}>
               <Box >
-                <DroppableField id={index} value={fields[index]} />
+                <DroppableField id={index} value={leastEnjoyFields[index]} />
               </Box>
             </Grid>
             ))

@@ -63,6 +63,7 @@ const DraggableItem = ({ id, label }) => {
 
 const DroppableField = ({ id, value }) => {
   const { setNodeRef } = useDroppable({ id });
+  console.log(value)
   return (
     <Box
       ref={setNodeRef}
@@ -160,6 +161,7 @@ const Dragndrop = () => {
     const { active, over } = event;
     if (over) {
       const activeOption = options.find((o) => o.id === active.id);
+      console.log("activeOption :", activeOption);
 
       // Update the appropriate grid state based on the droppable field
       if (mostEnjoyFields[over.id] !== undefined) {
